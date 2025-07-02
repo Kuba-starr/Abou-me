@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Kudaiberdi — Про меня</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0f2027; /* fallback */
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .stars span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: moveStars 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes moveStars {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      max-width: 600px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .emoji {
+      font-size: 50px;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <!-- Генерируем звезды -->
+    <script>
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('span');
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * -100 + 'vh';
+        star.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.querySelector('.stars').appendChild(star);
+      }
+    </script>
+  </div>
+
+  <div class="card">
+    <div class="emoji">🚀</div>
+    <h1>Меня зовут Кудайберди</h1>
+    <p>Я люблю развиваться и стремлюсь к новому. ✨</p>
+    <p>Моё хобби — разное, я универсал: ⚽ футбол, 🏓 теннис, 🏐 волейбол и другие.</p>
+    <p>Я мечтаю учиться за границей 🌍 и жить там. Мне нравится личное пространство и тишина 🧘‍♂️.</p>
+    <p>А ещё я люблю кошек 🐱!</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Моя семья</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      background: linear-gradient(270deg, #1e3c72, #2a5298, #1e3c72);
+      background-size: 600% 600%;
+      animation: gradientMove 20s ease infinite;
+      position: relative;
+    }
+
+    @keyframes gradientMove {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      box-shadow: 0 0 6px 2px white;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-15vh);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(115vh);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px 50px;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(255,255,255,0.3);
+      max-width: 700px;
+      text-align: center;
+      z-index: 1;
+      line-height: 1.6;
+      font-size: 1.2rem;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 3rem;
+      color: #ffe066;
+      text-shadow: 0 0 15px #ffa500;
+    }
+
+    p {
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: #ffcc66;
+      font-weight: 600;
+    }
+
+    .heart {
+      color: #ff4d4d;
+      font-size: 1.6rem;
+      animation: beat 1.5s infinite;
+      display: inline-block;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <h1>Моя семья</h1>
+    <p>У нас в семье 5 детей: 3 девочки и 2 мальчика. Мы поддерживаем друг друга, делимся радостью и смеёмся вместе.</p>
+
+    <p>В семье я <span class="highlight">больше люблю братика</span>, потому что он мой единственный братик. Я себе хотел брата или братика, когда был маленьким, чтобы было с кем играть.</p>
+
+    <p>Мои сестры не скучали, потому что у них было с кем играть, а мне не интересно было с ними — интересы не сошлись.</p>
+
+    <p>И вот, спустя 12 лет, я дождался. Я его люблю больше себя<span class="heart">❤️</span>.</p>
+  </div>
+
+<script>
+  const starsContainer = document.getElementById('stars');
+  const starCount = 120;
+
+  for(let i=0; i<starCount; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    const size = Math.random() * 3 + 1; // от 1 до 4 px
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.animationDuration = (Math.random() * 7 + 5) + 's';
+    star.style.animationDelay = Math.random() * 15 + 's';
+    starsContainer.appendChild(star);
+  }
+</script>
+
+</body>
+</html>
